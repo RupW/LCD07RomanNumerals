@@ -5,6 +5,12 @@ using System.Text;
 
 namespace RomanNumeralsTest
 {
+    /// <summary>
+    ///   Compute Modern Roman Numerals for a given integer, generating one digit at a time.
+    /// </summary>
+    /// <remarks>
+    ///   Iteraion two solution, pairing with Matt.
+    /// </remarks>
     public class RomanNumerals2 : IRomanNumerals
     {
         public string ToRomanNumerals(int value)
@@ -22,7 +28,18 @@ namespace RomanNumeralsTest
             return output.ToString();
         }
 
-        private void AppendDigit(StringBuilder output, char one, char five, char ten, int value)
+        /// <summary>
+        ///   Generate Roman numerals for a single digit 0-9; use configurable
+        ///   numeral symbols to allow this to be applied to all of ones, tens and hundreds.
+        /// 
+        ///   This is the refactored-down form - see the original switch below!
+        /// </summary>
+        /// <param name="output">StringBuilder for output</param>
+        /// <param name="one">Symbol to use for ones, e.g. I</param>
+        /// <param name="five">Symbol to use for fives, e.g. V</param>
+        /// <param name="ten">Symbol to use for tens, e.g. X</param>
+        /// <param name="value">Digit 0-9 to encode</param>
+        private static void AppendDigit(StringBuilder output, char one, char five, char ten, int value)
         {
             int numberOfOnes = value % 5;
             bool isOverFive = value >= 5;
@@ -39,7 +56,18 @@ namespace RomanNumeralsTest
             }
         }
 
-        private void AppendDigitOld(StringBuilder output, char one, char five, char ten, int value)
+        /// <summary>
+        ///   Generate Roman numerals for a single digit 0-9; use configurable
+        ///   numeral symbols to allow this to be applied to all of ones, tens and hundreds.
+        /// 
+        ///   Original nine-entry switch statement.
+        /// </summary>
+        /// <param name="output">StringBuilder for output</param>
+        /// <param name="one">Symbol to use for ones, e.g. I</param>
+        /// <param name="five">Symbol to use for fives, e.g. V</param>
+        /// <param name="ten">Symbol to use for tens, e.g. X</param>
+        /// <param name="value">Digit 0-9 to encode</param>
+        private static void AppendDigitSwitch(StringBuilder output, char one, char five, char ten, int value)
         {
             switch (value % 10)
             {

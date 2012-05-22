@@ -5,21 +5,22 @@ using System.Text;
 
 namespace RomanNumeralsTest
 {
+    /// <summary>
+    ///   Compute Modern Roman Numerals for a given integer using a sorted list of symbols
+    /// </summary>
+    /// <remarks>
+    ///   Iteraion one solution, pairing with Adnan.
+    /// </remarks>
     public class RomanNumerals1 : IRomanNumerals
     {
-        private class ReverseIntegerComparer : Comparer<int>
-        {
-            public override int Compare(int x, int y)
-            {
-                return y.CompareTo(x);
-            }
-        }
-
         /// <summary>
         ///   The set of Roman numeral symbols in greatest-first order
         ///   We include the permitted one-subtraction symbols in this list
         /// </summary>
-        public SortedList<int, String> Symbols = new SortedList<int, string>(new ReverseIntegerComparer()) {
+        /// <remarks>
+        ///   Ideally we would start with the basic list and compute the subtraction rows too!
+        /// </remarks>
+        public static readonly SortedList<int, String> Symbols = new SortedList<int, string>(new ReverseIntegerComparer()) {
             { 1, "I" },
             { 4, "IV" },
             { 5, "V" },
@@ -51,6 +52,14 @@ namespace RomanNumeralsTest
             }
 
             return output.ToString();
+        }
+
+        private class ReverseIntegerComparer : Comparer<int>
+        {
+            public override int Compare(int x, int y)
+            {
+                return y.CompareTo(x);
+            }
         }
     }
 }

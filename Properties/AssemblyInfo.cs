@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("RomanNumeralsTest")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("London Code Dojo 07 - Roman Numerals")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("RomanNumeralsTest")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2012")]
+[assembly: AssemblyCompany("Rupert Wood")]
+[assembly: AssemblyProduct("London Code Dojo 07")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

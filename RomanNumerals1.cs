@@ -9,13 +9,13 @@ namespace RomanNumeralsTest
     ///   Compute Modern Roman Numerals for a given integer using a sorted list of symbols
     /// </summary>
     /// <remarks>
-    ///   Iteraion one solution, pairing with Adnan.
+    ///   Iteration one solution, pairing with Adnan.
     /// </remarks>
     public class RomanNumerals1 : IRomanNumerals
     {
         /// <summary>
-        ///   The set of Roman numeral symbols in greatest-first order
-        ///   We include the permitted one-subtraction symbols in this list
+        ///   The set of Roman numeral symbols in greatest-first order.
+        ///   We include the permitted one-subtraction symbols in this list.
         /// </summary>
         /// <remarks>
         ///   Ideally we would start with the basic list and compute the subtraction rows too!

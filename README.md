@@ -1,4 +1,4 @@
-This is my teams' solutions for the London Code Dojo 7 exercise, generating modern Roman numerals for a given integer.
+These are my teams' solutions for the London Code Dojo 7 exercise, generating modern Roman numerals for a given integer.
 
   http://www.meetup.com/London-Code-Dojo/events/62738162/
 

@@ -9,51 +9,73 @@ namespace RomanNumeralsTest
     {
         public string ToRomanNumerals(int value)
         {
-            return new string('M', value / 1000)
-                + MakeDigit('C', 'D', 'M', (value / 100) % 10)
-                + MakeDigit('X', 'L', 'C', (value / 10) % 10)
-                + MakeDigit('I', 'V', 'X', value % 10);
+            var output = new StringBuilder();
+
+            for (int thousands = (value / 1000); thousands > 0; --thousands)
+            {
+                output.Append('M');
+            }
+            AppendDigit(output, 'C', 'D', 'M', (value / 100) % 10);
+            AppendDigit(output, 'X', 'L', 'C', (value / 10) % 10);
+            AppendDigit(output, 'I', 'V', 'X', value % 10);
+
+            return output.ToString();
         }
 
-        private string MakeDigit(char one, char five, char ten, int value)
+        private void AppendDigit(StringBuilder output, char one, char five, char ten, int value)
         {
             int numberOfOnes = value % 5;
             bool isOverFive = value >= 5;
 
-            if (numberOfOnes == 4) {
-                return one.ToString() + (isOverFive ? ten : five);
-            } else {
-                return (isOverFive ? five.ToString() : "") + new string(one, numberOfOnes);
+            if (numberOfOnes == 4)
+            {
+                output.Append(one);
+                output.Append(isOverFive ? ten : five);
+            }
+            else
+            {
+                if (isOverFive) output.Append(five);
+                output.Append(one, numberOfOnes);
             }
         }
 
-        /* Switch 0-9
-        private string MakeDigitOld(char one, char five, char ten, int value)
+        private void AppendDigitOld(StringBuilder output, char one, char five, char ten, int value)
         {
             switch (value % 10)
             {
                 case 1:
-                    return one.ToString();
+                    output.Append(one);
+                    break;
                 case 2:
-                    return new string(one, 2);
+                    output.Append(one, 2);
+                    break;
                 case 3:
-                    return new string(one, 3);
+                    output.Append(one, 3);
+                    break;
                 case 4:
-                    return one.ToString() + five;
+                    output.Append(one);
+                    output.Append(five);
+                    break;
                 case 5:
-                    return five.ToString();
+                    output.Append(five);
+                    break;
                 case 6:
-                    return five.ToString() + one;
+                    output.Append(five);
+                    output.Append(one);
+                    break;
                 case 7:
-                    return five.ToString() + new string(one, 2);
+                    output.Append(five);
+                    output.Append(one, 2);
+                    break;
                 case 8:
-                    return five.ToString() + new string(one, 3); ;
+                    output.Append(five);
+                    output.Append(one, 3);
+                    break;
                 case 9:
-                    return one.ToString() + ten;
-                default:
-                    return "";
+                    output.Append(one);
+                    output.Append(ten);
+                    break;
             }
         }
-        */
     }
 }

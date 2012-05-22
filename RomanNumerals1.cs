@@ -7,7 +7,7 @@ namespace RomanNumeralsTest
 {
     public class RomanNumerals1 : IRomanNumerals
     {
-        public SortedList<int, String> symbols = new SortedList<int, string> {
+        public SortedList<int, String> Symbols = new SortedList<int, string> {
             { 1, "I" },
             { 4, "IV" },
             { 5, "V" },
@@ -23,41 +23,31 @@ namespace RomanNumeralsTest
             { 1000, "M" }
         };
 
-        public String BuildStringOfCharacters(int count, int value)
-        {
-            StringBuilder output = new StringBuilder();
-
-            String numeral = symbols[value];
-            for (int i = 0; i < count; ++i)
-            {
-                output.Append(numeral);
-            }
-
-            return output.ToString();
-        }
-
         public KeyValuePair<int, string> HighestDivisor(int input)
         {
-            return symbols.Where(kv => kv.Key <= input).LastOrDefault();
+            return Symbols.LastOrDefault(kv => kv.Key <= input);
         }
 
-        public String BuildStringDivide(int input)
+        public void BuildStringDivide(StringBuilder output, int input)
         {
             int remaining = input;
-            StringBuilder output = new StringBuilder();
             while (remaining > 0)
             {
                 var nextCharacter = HighestDivisor(remaining);
                 int count = remaining / nextCharacter.Key;
                 remaining = remaining % nextCharacter.Key;
-                output.Append(BuildStringOfCharacters(count, nextCharacter.Key));
+                for (; count > 0; --count)
+                {
+                    output.Append(nextCharacter.Value);
+                }
             }
-            return output.ToString();
         }
 
         public String ToRomanNumerals(int input)
         {
-            return BuildStringDivide(input);
+            StringBuilder output = new StringBuilder();
+            BuildStringDivide(output, input);
+            return output.ToString();
         }
 
         #region Numeral class code

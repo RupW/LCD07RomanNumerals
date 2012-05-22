@@ -9,7 +9,7 @@ namespace RomanNumeralsTest
     ///   Compute Modern Roman Numerals for a given integer, generating one digit at a time.
     /// </summary>
     /// <remarks>
-    ///   Iteraion two solution, pairing with Matt.
+    ///   Iteration two solution, pairing with Matt.
     /// </remarks>
     public class RomanNumerals2 : IRomanNumerals
     {

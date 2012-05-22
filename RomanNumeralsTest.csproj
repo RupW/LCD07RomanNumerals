@@ -49,6 +49,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="IRomanNumerals.cs" />
     <Compile Include="RomanNumerals.cs" />
     <Compile Include="RomanNumerals1.cs" />
     <Compile Include="UnitTest1.cs" />

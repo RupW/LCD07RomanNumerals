@@ -5,12 +5,8 @@ using System.Text;
 
 namespace RomanNumeralsTest
 {
-    public class RomanNumerals1
+    public class RomanNumerals1 : IRomanNumerals
     {
-
-
-
-
         public SortedList<int, String> symbols = new SortedList<int, string> {
             { 1, "I" },
             { 4, "IV" },

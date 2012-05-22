@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RomanNumeralsTest
 {
-    public class RomanNumerals
+    public class RomanNumerals : IRomanNumerals
     {
         public string ToRomanNumerals(int value)
         {

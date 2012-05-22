@@ -7,7 +7,19 @@ namespace RomanNumeralsTest
 {
     public class RomanNumerals1 : IRomanNumerals
     {
-        public SortedList<int, String> Symbols = new SortedList<int, string> {
+        private class ReverseIntegerComparer : Comparer<int>
+        {
+            public override int Compare(int x, int y)
+            {
+                return y.CompareTo(x);
+            }
+        }
+
+        /// <summary>
+        ///   The set of Roman numeral symbols in greatest-first order
+        ///   We include the permitted one-subtraction symbols in this list
+        /// </summary>
+        public SortedList<int, String> Symbols = new SortedList<int, string>(new ReverseIntegerComparer()) {
             { 1, "I" },
             { 4, "IV" },
             { 5, "V" },
@@ -23,30 +35,21 @@ namespace RomanNumeralsTest
             { 1000, "M" }
         };
 
-        public KeyValuePair<int, string> HighestDivisor(int input)
-        {
-            return Symbols.LastOrDefault(kv => kv.Key <= input);
-        }
-
-        public void BuildStringDivide(StringBuilder output, int input)
-        {
-            int remaining = input;
-            while (remaining > 0)
-            {
-                var nextCharacter = HighestDivisor(remaining);
-                int count = remaining / nextCharacter.Key;
-                remaining = remaining % nextCharacter.Key;
-                for (; count > 0; --count)
-                {
-                    output.Append(nextCharacter.Value);
-                }
-            }
-        }
-
         public String ToRomanNumerals(int input)
         {
             var output = new StringBuilder();
-            BuildStringDivide(output, input);
+
+            int remainder = input;
+            foreach(var symbol in Symbols)
+            {
+                int count = remainder / symbol.Key;
+                remainder %= symbol.Key;
+                for (; count > 0; --count)
+                {
+                    output.Append(symbol.Value);
+                }
+            }
+
             return output.ToString();
         }
     }

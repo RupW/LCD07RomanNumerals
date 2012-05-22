@@ -50,9 +50,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="IRomanNumerals.cs" />
-    <Compile Include="RomanNumerals.cs" />
+    <Compile Include="RomanNumerals2.cs" />
     <Compile Include="RomanNumerals1.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="RomanNumeralsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

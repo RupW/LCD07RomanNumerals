@@ -4,12 +4,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace RomanNumeralsTest
 {
     [TestClass]
-    public class TestRomanNumerals1 : UnitTest1<RomanNumerals1> { }
+    public class RomanNumerals1Test : RomanNumeralsTestBase<RomanNumerals1> { }
 
     [TestClass]
-    public class TestRomanNumerals : UnitTest1<RomanNumerals> { }
+    public class RomanNumerals2Test : RomanNumeralsTestBase<RomanNumerals2> { }
 
-    public class UnitTest1<T> where T : IRomanNumerals, new()
+    public class RomanNumeralsTestBase<T> where T : IRomanNumerals, new()
     {
         private readonly IRomanNumerals convertor = new T();
 
